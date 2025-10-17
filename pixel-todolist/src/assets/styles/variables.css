@@ -1,0 +1,39 @@
+:root {
+  /* 像素风格调色板 - GameBoy 风格 */
+  --color-primary: #0f380f;
+  --color-secondary: #306230;
+  --color-tertiary: #8bac0f;
+  --color-light: #9bbc0f;
+
+  /* 深色主题 */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2a2a2a;
+  --bg-tertiary: #3a3a3a;
+
+  /* 文字颜色 */
+  --text-primary: #9bbc0f;
+  --text-secondary: #8bac0f;
+  --text-disabled: #555555;
+
+  /* 边框和阴影 */
+  --border-color: #306230;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+
+  /* 像素单位 */
+  --pixel-size: 4px;
+  --pixel-border: 2px;
+
+  /* 间距 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* 字体大小 */
+  --font-xs: 12px;
+  --font-sm: 14px;
+  --font-md: 16px;
+  --font-lg: 20px;
+  --font-xl: 24px;
+}
