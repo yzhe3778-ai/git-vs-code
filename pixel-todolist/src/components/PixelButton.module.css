@@ -1,0 +1,43 @@
+.pixel-button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-tertiary);
+  color: var(--color-primary);
+  border: var(--pixel-border) solid var(--border-color);
+  box-shadow: var(--pixel-size) var(--pixel-size) 0 var(--shadow-color);
+  transition: all 0.1s ease;
+  font-size: var(--font-sm);
+  text-transform: uppercase;
+  position: relative;
+}
+
+.pixel-button:hover {
+  background: var(--color-light);
+  transform: translate(-2px, -2px);
+  box-shadow: calc(var(--pixel-size) + 2px) calc(var(--pixel-size) + 2px) 0 var(--shadow-color);
+}
+
+.pixel-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--shadow-color);
+}
+
+.pixel-button:disabled {
+  background: var(--bg-tertiary);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pixel-button-danger {
+  background: #d44;
+  color: #fff;
+}
+
+.pixel-button-danger:hover {
+  background: #f55;
+}
+
+.pixel-button-small {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-xs);
+}

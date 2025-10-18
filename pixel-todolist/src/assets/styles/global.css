@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import './variables.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* 像素化滚动条 */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border: var(--pixel-border) solid var(--border-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-tertiary);
+  border: var(--pixel-border) solid var(--border-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-light);
+}
+
+/* 像素化选择文本 */
+::selection {
+  background: var(--color-tertiary);
+  color: var(--color-primary);
+}
+
+/* 全局容器 */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 像素边框效果 */
+.pixel-border {
+  border: var(--pixel-border) solid var(--border-color);
+  box-shadow:
+    var(--pixel-size) var(--pixel-size) 0 var(--shadow-color);
+}
+
+.pixel-border-inset {
+  border: var(--pixel-border) solid var(--border-color);
+  box-shadow:
+    inset var(--pixel-size) var(--pixel-size) 0 var(--shadow-color);
+}
+
+/* 按钮基础样式 */
+button {
+  font-family: 'Press Start 2P', cursive;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: var(--font-sm);
+}
+
+button:active {
+  transform: translate(2px, 2px);
+}
+
+/* 输入框基础样式 */
+input, textarea {
+  font-family: 'Press Start 2P', cursive;
+  font-size: var(--font-sm);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: var(--pixel-border) solid var(--border-color);
+  padding: var(--spacing-sm);
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-light);
+}
+
+/* 响应式文字大小 */
+@media (max-width: 768px) {
+  :root {
+    --font-xs: 10px;
+    --font-sm: 12px;
+    --font-md: 14px;
+    --font-lg: 16px;
+    --font-xl: 20px;
+  }
+}
