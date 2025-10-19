@@ -3,16 +3,23 @@ import OpenAI from 'openai';
 
 const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY || 'sk-2b913359decb440988d699c69959f3b7';
 
+// 添加调试日志
+console.log('API Key configured:', DEEPSEEK_API_KEY ? 'Yes' : 'No');
+
 const openai = new OpenAI({
   baseURL: 'https://api.deepseek.com',
   apiKey: DEEPSEEK_API_KEY,
+  timeout: 30000, // 30秒超时
 });
 
 export async function POST(request: NextRequest) {
   try {
+    console.log('API 请求开始...');
     const { input, intensity } = await request.json();
+    console.log('接收到请求参数:', { input, intensity });
 
     if (!input || typeof input !== 'string') {
+      console.log('输入验证失败');
       return NextResponse.json(
         { error: '请提供有效的输入内容' },
         { status: 400 }
@@ -78,7 +85,9 @@ export async function POST(request: NextRequest) {
       max_tokens: 500,
     });
 
+    console.log('API 调用成功，处理响应...');
     const content = completion.choices[0]?.message?.content || '';
+    console.log('API 返回内容:', content);
 
     // 解析返回的内容
     let responses = content
@@ -105,11 +114,25 @@ export async function POST(request: NextRequest) {
     // 只保留前3条
     responses = responses.slice(0, 3);
 
+    console.log('最终返回的响应:', responses);
     return NextResponse.json({ responses });
   } catch (error) {
     console.error('生成回复时出错:', error);
+    
+    // 更详细的错误信息
+    if (error instanceof Error) {
+      console.error('错误详情:', {
+        name: error.name,
+        message: error.message,
+        stack: error.stack,
+      });
+    }
+    
     return NextResponse.json(
-      { error: '生成失败，请稍后重试' },
+      { 
+        error: '生成失败，请稍后重试',
+        details: error instanceof Error ? error.message : '未知错误'
+      },
       { status: 500 }
     );
   }

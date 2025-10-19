@@ -36,6 +36,7 @@ export default function Home() {
     setResponses([]);
 
     try {
+      console.log('发送请求到 /api/generate');
       const response = await fetch('/api/generate', {
         method: 'POST',
         headers: {
@@ -47,11 +48,21 @@ export default function Home() {
         }),
       });
 
+      console.log('响应状态:', response.status, response.statusText);
+
       if (!response.ok) {
-        throw new Error('生成失败，请重试');
+        const errorData = await response.json();
+        console.error('API 错误:', errorData);
+        throw new Error(errorData.error || `HTTP ${response.status}: 生成失败，请重试`);
       }
 
       const data = await response.json();
+      console.log('API 返回数据:', data);
+      
+      if (!data.responses || !Array.isArray(data.responses)) {
+        throw new Error('API 返回数据格式错误');
+      }
+      
       setResponses(data.responses);
 
       // 保存到历史记录
@@ -65,7 +76,9 @@ export default function Home() {
       setHistory(newHistory);
       localStorage.setItem('chaojiabaoy-history', JSON.stringify(newHistory));
     } catch (error) {
-      alert(error instanceof Error ? error.message : '发生错误，请重试');
+      console.error('请求失败:', error);
+      const errorMessage = error instanceof Error ? error.message : '发生未知错误，请重试';
+      alert(`错误: ${errorMessage}`);
     } finally {
       setLoading(false);
     }
