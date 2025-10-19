@@ -302,6 +302,7 @@ export default function Home() {
           </div>
           <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
             <p>&copy; 2025 超吵宝. All rights reserved. AI智能回怼助手</p>
+            <p className="text-xs mt-2 opacity-60">🚀 自动部署测试 - 更新时间: {new Date().toLocaleString('zh-CN')}</p>
           </div>
         </div>
       </footer>
