@@ -25,7 +25,7 @@ export default function Home() {
       <section className="bg-gradient-to-b from-[#07C160] to-[#06AD56] text-white py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-6">AI 智能回怼助手</h1>
-          <p className="text-xl mb-8 opacity-90">让AI帮你想出最犀利的回复，再也不怕被怼得哑口无言！</p>
+          <p className="text-xl mb-8 opacity-90">支持语音输入！让AI帮你想出最犀利的回复，再也不怕被怼得哑口无言！</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a 
               href="/chat" 
