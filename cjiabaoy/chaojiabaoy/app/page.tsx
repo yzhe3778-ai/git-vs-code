@@ -1,3 +1,27 @@
+/**
+ * Home 着陆页组件
+ * 目标：以营销型结构快速传达“超吵宝”产品价值，促使用户试用 / 订阅。
+ * 页面结构概览：
+ *  1. Header 导航：品牌标识 + 基本链接 + 登录 CTA（后续接入鉴权）
+ *  2. Hero 主视觉：产品口号 + 试用按钮 + 功能演示（当前为静态 Mock，后续可替换为真实交互）
+ *  3. Benefits 核心优势：三列卖点强调差异化价值
+ *  4. Features 功能介绍：两组功能模块列表（可抽象成 <FeatureGroup/>）
+ *  5. Testimonials 用户评价：社交证明，提升信任（可做轮播/懒加载）
+ *  6. CTA 二次行动召唤：再次推动试用
+ *  7. Pricing 价格方案：分层定价，引导专业版订阅（标“推荐”徽章）
+ *  8. Footer 页脚：导航补充 + 版权信息 + 自动更新时间（部署时间展示可信度）
+ *
+ * 后续可演进点：
+ *  - 将重复的卡片抽离成复用组件：LogoBadge / BenefitCard / PricingTier / TestimonialCard。
+ *  - 将硬编码文案与价格提取到配置或 CMS（便于非技术同学运营修改）。
+ *  - Hero 演示替换为真实“语音输入 + AI 回复”交互（可用 Suspense + 动态导入）。
+ *  - Pricing 区域增加“当前选择”状态管理与切换（月付/年付）。
+ *  - SEO 优化：添加 <head> 中的 meta/og 标签（在布局或使用 next/head）。
+ *  - 性能：大部分内容可静态生成（SSG），用户评价与价格可增量再验证更新。
+ *  - 可访问性：部分 emoji 与图标增加 aria-label，确保读屏体验。
+ *
+ * 注意：当前无交互逻辑，保持纯展示；新增动态行为时需分离容器逻辑与展示组件。
+ */
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50">
